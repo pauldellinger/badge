@@ -1,3 +1,0 @@
-C:/Users/Paul Dellinger/CLionProjects/games/badge/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Paul Dellinger/CLionProjects/games/badge/cmake-build-debug/CMakeFiles/badge.dir
-C:/Users/Paul Dellinger/CLionProjects/games/badge/cmake-build-debug/CMakeFiles/rebuild_cache.dir

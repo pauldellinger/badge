@@ -38,4 +38,5 @@
 #SFML (but cmakelist assumes it's downloaded in root directory)
 SFML/
 
-#Not sure what this is but as long as the other person has Clion should be fine"
+#Generate cmake-build-debug locally by reloading cmakelists.txt
+cmake-build-debug/
