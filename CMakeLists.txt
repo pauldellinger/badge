@@ -3,7 +3,8 @@ project(badge)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(badge main.cpp)
+# is this line just going to get really long or...
+add_executable(badge main.cpp Game.cpp Game.hpp GameObjects/Ball.cpp GameObjects/Ball.hpp GameObjects/Paddle.cpp GameObjects/Paddle.hpp)
 
 ## If you want to link SFML statically
 # set(SFML_STATIC_LIBRARIES TRUE)
