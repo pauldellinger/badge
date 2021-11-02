@@ -1,6 +1,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Game.h"
 
 //bool isMouseOver(sf::Shape &shape, const sf::Input &input)
 //{
@@ -23,39 +24,35 @@
 //    return false;
 //}
 
-int main() {
-    sf::CircleShape shape(50);
-    // set the shape color to green
-    shape.setFillColor(sf::Color(100, 250, 50));
-    // create the window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+int getRandomNumber(int max, int min) {
+    return rand()%(max-min + 1) + min;
+}
 
-    // run the program as long as the window is open
-    while (window.isOpen())
-    {
-        sf::Mouse mouse;
-        // check all the window's events that were triggered since the last iteration of the loop
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+bool isClickWithinShape(sf::Shape &shape, sf::Mouse &mouse, sf::RenderWindow &window)
+{
 
-        // clear the window with black color
-        window.clear(sf::Color::Black);
-
-        // draw everything here...
-        window.draw(shape);
-
-        shape.setPosition(
-                mouse.getPosition(window).x - shape.getRadius(),
-                mouse.getPosition(window).y - shape.getRadius()
-        );
-
-        // end the current frame
-        window.display();
+//    std::cout << "mouse positions x, y: " << mouse.getPosition(window).x << ", " << mouse.getPosition(window).y;
+//    std::cout << '\n';
+//    std::cout << "shape positions x, y, width, height: " << shape.getPosition().x << ", " << shape.getPosition().y << ", " << shape.getLocalBounds().width << ", " << shape.getLocalBounds().height;
+//    std::cout << "\n";
+    if (
+            mouse.getPosition(window).x >= shape.getPosition().x &&
+            mouse.getPosition(window).x <= shape.getPosition().x + shape.getGlobalBounds().width &&
+            mouse.getPosition(window).y >= shape.getPosition().y &&
+            mouse.getPosition(window).y <= shape.getPosition().y + shape.getGlobalBounds().height
+            ) {
+        return true;
     }
+
+    return false;
+}
+
+int main() {
+    sf::CircleShape circle(50);
+    // set the circle color to green
+    circle.setFillColor(sf::Color(100, 250, 50));
+    // create the window
+    Game game;
+    game.run();
     return 0;
 }
